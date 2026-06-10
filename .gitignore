@@ -1,0 +1,19 @@
+# Vue/前端相关
+node_modules/
+dist/
+.vite/
+target/
+*.class
+*.jar
+*.jar.original
+*.zip
+*.log
+*.local
+.env
+.env.*
+!.env.example
+
+# IDE/系统文件
+.idea/
+.DS_Store
+Thumbs.db
