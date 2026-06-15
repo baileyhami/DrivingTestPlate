@@ -1,0 +1,59 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: jiakao-ydt-server
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/jiakao_yidiantong?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      database: ${REDIS_DATABASE:0}
+      password: ${REDIS_PASSWORD:}
+      timeout: 3000ms
+  cache:
+    type: redis
+  jackson:
+    time-zone: Asia/Shanghai
+    date-format: yyyy-MM-dd H
+
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+
+# JWT（生产环境请改为强随机密钥并配合环境变量�?
+jwt:
+  secret: "JiakaoYdt2026SecretKeyForJwtMustBeLongEnough256bits!!"
+  expire-minutes: 10080
+
+logging:
+  level:
+    com.jiakao.ydt: debug
+
+openai:
+  api-key: ${OPENAI_API_KEY:}
+  base-url: ${OPENAI_BASE_URL:https://api.openai.com/v1}
+  chat-model: ${OPENAI_CHAT_MODEL:gpt-4o-mini}
+  timeout-seconds: 25
+  temperature: 0.4
+  system-prompt: "你是驾考一点通的智能助手，请用简洁、实用的中文回答用户问题�?
+
+# 第三方页面与地图（密钥建议生产环境用 YDT_INTEGRATION_AMAP_KEY 等环境变量覆盖）
+ydt:
+  integration:
+    official-exam-schedule-url: "https://hb.122.gov.cn/web/html/?type=1&ticket=NIL&code=E_A_1023#/nView/exam/limitpub"
+    # Web 服务 Key（地理编码等 REST）；若控制台开启数字签名，需同时配置 amap-secret
+    amap-key: ${YDT_INTEGRATION_AMAP_KEY:}
+    amap-secret: 183af43b15482d521ba6ebb044cd68ce

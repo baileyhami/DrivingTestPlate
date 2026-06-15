@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --ydt-text: #1f2937;
+    --ydt-text-secondary: #6b7280;
+    --ydt-text-muted: #9ca3af;
+    --ydt-border: #e5e7eb;
+    --ydt-surface: #ffffff;
+    --ydt-surface-muted: #f3f4f6;
+    --ydt-page-bg: #f0f2f5;
+    --ydt-sidebar: #0f172a;
+    --ydt-sidebar-accent: #38bdf8;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: var(--ydt-text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    background: var(--ydt-page-bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card {
+    background-color: var(--ydt-surface);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+/* 列表页统一卡片质感 */
+.ydt-card.el-card {
+    border-radius: 12px;
+    border: 1px solid var(--ydt-border);
+}
+
+.ydt-card .el-card__header {
+    border-bottom: 1px solid var(--ydt-border);
+    padding: 16px 20px;
+}
+
+.ydt-card .el-card__body {
+    padding: 20px;
+}
+
+.line1 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.line2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
